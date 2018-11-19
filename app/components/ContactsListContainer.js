@@ -23,13 +23,9 @@ class ContactsListContainer extends Component {
         };
     }
 
-    componentDidMount() {
-        ContactsService.getContactList();
-    }
-
     render() {
         return (
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 {this.__renderList()}
             </div>
         );
@@ -42,7 +38,17 @@ class ContactsListContainer extends Component {
         });
         return (
             <table>
+                <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>USERNAME</th>
+                    <th>FIRST</th>
+                    <th>LAST</th>
+                    <th>EDIT</th>
+                    <th>REMOVE</th>
+                </tr>
                 {items}
+                </tbody>
             </table>
         );
     }

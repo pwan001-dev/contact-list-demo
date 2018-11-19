@@ -8,22 +8,23 @@ export default class ContactItemView extends Component {
         contact: PropTypes.object.isRequired,
     };
 
-    handleClick = e => {
-        ContactsService.addContact({
-            username: 'addedDude',
-            firstname: 'Added',
-            lastname: 'Dude',
-        });
+    edit = e => {
+        console.log('EDIT unimplemented')
+    };
+
+    remove = e => {
+        ContactsService.deleteContact(this.props.contact);
     };
 
     render() {
         return (
-            <tr onClick={this.handleClick}>
+            <tr>
                 <td>{this.props.contact.id}</td>
                 <td>{this.props.contact.username}</td>
                 <td>{this.props.contact.firstname}</td>
                 <td>{this.props.contact.lastname}</td>
-                <td>{'EDIT'}</td>
+                <td onClick={this.edit} style={{width: '75px'}}>{'EDIT'}</td>
+                <td onClick={this.remove} style={{width: '75px'}}>{'REMOVE'}</td>
             </tr>
         );
     }

@@ -25,14 +25,51 @@ export default class ContactsService {
 
     static addContact(contact) {
         setTimeout(() => {
-            contacts.push(contact); //TODO service request
-            SampleActionCreators.contactAdded({
-                result: 'success',
-                contact: {
-                    id: count++, //TODO DB handle key
-                    ...contact
-                }
-            })
+            let index = contacts.find((existingContact) => {
+                return contact.username === existingContact.username
+            });
+            if (index === undefined) {
+                contact.id = count++; //TODO DB handle uid
+                contacts.push(contact); //TODO service request
+                SampleActionCreators.contactAdded({
+                    contact
+                })
+            } else {
+                console.log('Duplicate Contact username blocked: ', contact);
+            }
+        });
+    }
+
+    static editContact(contact) {
+        setTimeout(() => {
+            let index = contacts.findIndex((contact) => {
+                return contact.id === id
+            });
+            if (index >= 0) {
+                contacts[index] = contact;
+                SampleActionCreators.contactEdited({
+                    contact
+                })
+            } else {
+                console.log('Edit failed for: ', contact)
+            }
+        });
+    }
+
+    static deleteContact(contact) {
+        setTimeout(() => {
+            let index = contacts.findIndex((existingContact) => {
+                return contact.id === existingContact.id
+            });
+            if (index >= 0) {
+                let deletedContact = contacts[index];
+                contacts.splice(index, 1);
+                SampleActionCreators.contactDeleted({
+                    contact: deletedContact
+                })
+            } else {
+                console.log('Delete failed for: ', contact)
+            }
         });
     }
 }

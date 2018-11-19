@@ -5,18 +5,11 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 class ContactsStore extends ReduceStore {
     getInitialState() {
         return {
-            contacts: [
-                // {
-                //     id: '0',
-                //     type: 'init',
-                //     price: 0.01
-                // }
-            ]
+            contacts: []
         };
     }
 
     reduce(state, action) {
-        console.log(action)
         switch (action.type) {
             case ActionTypes.CONTACT_LIST_LOADED:
                 return {
@@ -29,6 +22,24 @@ class ContactsStore extends ReduceStore {
                         action.data.contact
                     ]
                 };
+            case ActionTypes.CONTACT_EDITED: {
+                let contacts = [...state.contacts];
+                contacts.forEach((contact, index) => {
+                    if (contact.id === action.data.id) {
+                        contacts[index] = action.data.contact
+                    }
+                });
+                return {
+                    contacts
+                };
+            }
+            case ActionTypes.CONTACT_DELETED: {
+                return {
+                    contacts: state.contacts.filter((contact) => {
+                        return contact.id !== action.data.contact.id
+                    })
+                };
+            }
             default:
                 return state;
         }
