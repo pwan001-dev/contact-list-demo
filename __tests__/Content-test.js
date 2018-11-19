@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactTestUtils from "react-dom/test-utils";
-import Content from "../app/components/Content";
+import Content from "../app/components/ContactItemView";
 
 jest.mock('@material-ui/core/Button');
 

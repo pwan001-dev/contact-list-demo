@@ -1,6 +1,6 @@
 const ActionTypes = {
-  TYPE_001: 'type-001',
-  TYPE_002: 'type-002',
-}
+  CONTACT_LIST_LOADED: 'contact-list-loaded',
+  CONTACT_ADDED: 'contact-added',
+};
 
 export default ActionTypes;
