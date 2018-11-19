@@ -67,7 +67,7 @@ export default class AddContactForm extends Component {
                         Last:
                         <input type="text" value={this.state.lastname} onChange={this.handleLastNameChange}/>
                     </label>
-                    <input type="submit" value="Submit"
+                    <input type="submit" value="Add User"
                            style={{
                                borderStyle: 'solid',
                                borderWidth: '1px',
