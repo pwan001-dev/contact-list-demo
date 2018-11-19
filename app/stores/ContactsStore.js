@@ -25,7 +25,7 @@ class ContactsStore extends ReduceStore {
             case ActionTypes.CONTACT_EDITED: {
                 let contacts = [...state.contacts];
                 contacts.forEach((contact, index) => {
-                    if (contact.id === action.data.id) {
+                    if (contact.id === action.data.contact.id) {
                         contacts[index] = action.data.contact
                     }
                 });

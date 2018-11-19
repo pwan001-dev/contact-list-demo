@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
 import ContactsService from "../services/ContactsService";
 
 export default class ContactItemView extends Component {
@@ -9,7 +8,7 @@ export default class ContactItemView extends Component {
     };
 
     edit = e => {
-        console.log('EDIT unimplemented')
+        this.props.onEdit(this.props.contact)
     };
 
     remove = e => {

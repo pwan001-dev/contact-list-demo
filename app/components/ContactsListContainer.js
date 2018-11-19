@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 import {Container} from 'flux/utils';
 import ContactsStore from '../stores/ContactsStore';
 import ContactItemView from './ContactItemView';
-import ContactsService from "../services/ContactsService";
 
 class ContactsListContainer extends Component {
+    static propTypes = {
+        onEdit: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super(props);
 
@@ -58,6 +62,7 @@ class ContactsListContainer extends Component {
             <ContactItemView
                 key={'contact' + index}
                 contact={contact}
+                onEdit={this.props.onEdit}
             />
         )
     }

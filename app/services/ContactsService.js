@@ -13,7 +13,6 @@ const contacts = [
 
 export default class ContactsService {
     static getContactList() {
-        console.log('getContactList')
         setTimeout(() => {
             SampleActionCreators.contactListLoaded({
                 contacts: [
@@ -42,8 +41,8 @@ export default class ContactsService {
 
     static editContact(contact) {
         setTimeout(() => {
-            let index = contacts.findIndex((contact) => {
-                return contact.id === id
+            let index = contacts.findIndex((existingContact) => {
+                return contact.id === existingContact.id
             });
             if (index >= 0) {
                 contacts[index] = contact;

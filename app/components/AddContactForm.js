@@ -6,9 +6,12 @@ export default class AddContactForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'testuser',
-            firstname: 'first',
-            lastname: 'last'
+            username: '',
+            firstname: '',
+            lastname: ''
+            // username: 'testuser',
+            // firstname: 'first',
+            // lastname: 'last'
         };
     }
 
@@ -35,11 +38,11 @@ export default class AddContactForm extends Component {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
         });
-        // this.setState({
-        //     username: '',
-        //     firstname: '',
-        //     lastname: '',
-        // })
+        this.setState({
+            username: '',
+            firstname: '',
+            lastname: '',
+        })
     };
 
     render() {
